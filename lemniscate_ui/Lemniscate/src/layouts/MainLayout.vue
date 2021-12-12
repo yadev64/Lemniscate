@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh LpR fFf">
     <q-header elevated>
       <q-toolbar>
         <q-btn
@@ -11,25 +11,28 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
+        <q-toolbar-title> Lemniscate </q-toolbar-title>
+        <q-avatar>
+          <img
+            src="https://images.unsplash.com/photo-1639165637996-d6e79aff8823?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+          />
+        </q-avatar>
+        <!-- <h6 class="q-my-md q-mx-md">Daniel</h6> -->
 
-        <div>Quasar v{{ $q.version }}</div>
+        <q-btn-dropdown class="q-ml-md" stretch flat label="Daniel">
+          <q-list>
+            <!-- <q-item-label header>Folders</q-item-label> -->
+
+            <!-- <q-separator inset spaced /> -->
+            <q-item-label header>Sign out</q-item-label>
+          </q-list>
+        </q-btn-dropdown>
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
+    <q-drawer v-model="leftDrawerOpen" show-if-above class="inset-shadow">
+      <q-list class="q-pt-md">
+        <!-- <q-item-label header> Essential Links </q-item-label> -->
 
         <EssentialLink
           v-for="link in essentialLinks"
@@ -46,72 +49,72 @@
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
+import EssentialLink from "components/EssentialLink.vue";
 
 const linksList = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    title: "Dashboard",
+    caption: "quasar.dev",
+    icon: "dashboard",
+    link: "/dashboard",
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
+    title: "Analytics",
+    caption: "github.com/quasarframework",
+    icon: "code",
+    link: "/analytics",
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
+    title: "Customers",
+    caption: "chat.quasar.dev",
+    icon: "person",
+    link: "/customers",
   },
   {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
+    title: "Collections",
+    caption: "forum.quasar.dev",
+    icon: "collections",
+    link: "/collections",
   },
   {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
+    title: "Apps",
+    caption: "@quasarframework",
+    icon: "rss_feed",
+    link: "/apps",
   },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
+  // {
+  //   title: "Facebook",
+  //   caption: "@QuasarFramework",
+  //   icon: "public",
+  //   link: "https://facebook.quasar.dev",
+  // },
+  // {
+  //   title: "Quasar Awesome",
+  //   caption: "Community Quasar projects",
+  //   icon: "favorite",
+  //   link: "https://awesome.quasar.dev",
+  // },
 ];
 
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  name: 'MainLayout',
+  name: "MainLayout",
 
   components: {
-    EssentialLink
+    EssentialLink,
   },
 
-  setup () {
-    const leftDrawerOpen = ref(false)
+  setup() {
+    const leftDrawerOpen = ref(false);
 
     return {
       essentialLinks: linksList,
       leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
-    }
-  }
-})
+      toggleLeftDrawer() {
+        leftDrawerOpen.value = !leftDrawerOpen.value;
+      },
+    };
+  },
+});
 </script>
